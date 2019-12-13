@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>js实现国际化</title>
+
+	</head>
+	<body>
+		<p>基于cookies缓存 用编辑器打开测试</p>
+		<div class="wrap">
+			<p>
+				<lan set-lan="html:pageTitle"></lan>
+			</p>
+		</div>
+		<div class="selectWrap">
+			<p class="lang-title">
+				<lan set-lan="html:title"></lan>
+			</p>
+			<ul class='nav-dropdown'>
+				<li class="dropdown-item">简体中文</li>
+				<li class="dropdown-item">English</li>
+				<li class="dropdown-item">日本語</li>
+			</ul>
+		</div>
+	</body>
+	<script src="js/lang/home/cn.js"></script>
+	<script src="js/lang/home/en.js"></script>
+	<script src="js/lang/home/ja.js"></script>
+	<script src="js/lang/langIndex.js"></script>
+	<script>
+
+
+	      var lis = document.getElementsByClassName('dropdown-item');
+	      for (var i = 0; i < lis.length; i++) {
+	        (function (i) {
+	          lis[i].addEventListener('click', setLanguage, false);
+	        }(i))
+	      }
+		  function setLanguage() {
+			var lanCheck = event.target.innerHTML;
+			if(lanCheck == "English") {
+				setCookie('lan', 'en');
+			} else if(lanCheck == "简体中文") {
+				setCookie('lan', 'cn');
+			} else if(lanCheck == "日本語") {
+				setCookie('lan', 'ja');
+			}
+			readCookies()
+		}
+	</script>
+</html>
